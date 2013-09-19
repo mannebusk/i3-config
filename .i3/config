@@ -13,10 +13,10 @@
 # Colors
 #
 # class                 border  backgr. text    indicator
-client.focused          #182E06 #182E06 #dddddd
-client.focused_inactive #333333 #000000 #dddddd
-client.unfocused        #111111 #111111 #dddddd 
-client.urgent           #2f343a #900000 #ffffff
+client.focused          #75715e #75715e #333333
+client.focused_inactive #272822 #272822 #dddddd
+client.unfocused        #272822 #272822 #dddddd 
+client.urgent           #f92672 #f92672 #333333
 #######################################################
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
@@ -63,10 +63,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+s split h
+bindsym $mod+s split v
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -185,5 +185,13 @@ bar {
         colors { 
                 statusline #AAAAAA
                 background #333333
+
+                #Class              Border  Bg      Text
+                focused_workspace  #333333 #ae81ff #000000
+                active_workspace   #ffffff #75715e #000000
+                inactive_workspace #888888 #222222
+                urgent_workspace   #f92672 #f92672 #000000
         }
 }
+
+bindsym $mod+n exec nautilus --no-desktop
