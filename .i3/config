@@ -20,6 +20,7 @@ client.urgent           #f92672 #f92672 #333333
 #######################################################
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
+exec --no-startup-id nitrogen --restore
 
 set $mod Mod4
 
@@ -85,8 +86,14 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+# Assign scratch pads
+bindsym $mod+Shift+minus move scratchpad
+
+# Show scratch pads
+bindsym $mod+minus scratchpad show
+
 # focus the child container
-#bindcode $mod+d focus child
+# bindcode $mod+d focus child
 
 set $ws1 "1:Chrome"
 set $ws2 "2:HipChat"
@@ -193,5 +200,23 @@ bar {
                 urgent_workspace   #f92672 #f92672 #000000
         }
 }
+
+#
+# i3exit mode
+#
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+p mode "$mode_system"
 
 bindsym $mod+n exec nautilus --no-desktop
